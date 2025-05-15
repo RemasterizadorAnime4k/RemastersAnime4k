@@ -1,0 +1,2954 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Anime - Remastersanime4k</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Roboto&display=swap" rel="stylesheet" fetchpriority="high">
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --color1: #ffcccc;
+            --color2: #ccffff;
+            --color3: #ffd9cc;
+            --color4: #ccfffc;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--color1), var(--color2), var(--color3), var(--color4));
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            margin: 0;
+            padding: 100px 20px 20px; /* Añadir padding-top para navbar fija */
+			padding-top: 100px;
+            min-height: 100vh;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        .detail-nav {
+            backdrop-filter: blur(10px);
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 0.8rem 2rem;
+			margin: 0 auto 2rem; 
+            display: flex;
+			align-items: center;
+            justify-content: space-between;
+			gap: 2rem;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 1000;
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-family: 'Comic Neue', cursive;
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			transform: translateY(0);
+			
+        }
+		
+		.nav-hidden {
+			transform: translateY(-150%);
+		}
+		
+        .site-title-detail {
+            color: #2d3436;
+            font-size: 1.8rem;
+			margin: 0;
+			flex-shrink: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+			cursor: default;
+			user-select: none;
+        }
+
+        .back-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+			margin-left: auto;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            border: 2px solid white;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            font-family: 'Comic Neue', cursive;
+        }
+
+		.back-button:hover {
+			transform: translateY(-2px);
+			box-shadow: 3px 3px 6px #d1d1d1, -3px -3px 6px #ffffff;
+		}
+
+        .anime-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+			margin: 40px auto;
+			max-width: 1200px;
+        }
+		
+		.full-width-section {
+			grid-column: 1 / -1;
+			width: 100%;
+			max-width: 100vw;
+			margin: 2rem 0;
+		}
+		
+		
+		.manga-library,
+		.episodes-main-container {
+			max-width: 1400px; /* O el ancho que prefieras */
+			margin: 0 auto;
+			padding: 2rem;
+		}
+
+        .anime-cover {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid #fff;
+			text-align: center;
+            height: fit-content;
+			box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+        }
+
+        .anime-cover img {
+            width: 100%;
+			max-width: 400px;
+            border-radius: 15px;
+            border: 3px solid white;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+			transition: transform 0.3s ease;
+        }
+
+        .anime-info {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 2px solid #fff;
+			box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+        }
+		
+		.info-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			gap: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.info-item {
+			background: rgba(255, 255, 255, 0.9);
+			padding: 1.2rem;
+			border-radius: 15px;
+			text-align: center;
+			transition: transform 0.3s ease;
+		}
+
+		.info-item h3 {
+			color: var(--primary-color);
+			margin: 0 0 0.5rem 0;
+			font-size: 1.1rem;
+		}
+
+		.info-item p {
+			margin: 0;
+			font-size: 0.95rem;
+			color: #2d3436;
+		}
+		
+		.anime-description {
+			font-size: 1rem;
+			line-height: 1.6;
+			color: #2d3436;
+			padding: 1.5rem;
+			background: rgba(255, 255, 255, 0.9);
+			border-radius: 15px;
+			margin: 2rem 0;
+		}
+		
+		/* Contenedor de detalles */
+		.detail-boxes {
+			display: flex;
+			gap: 1rem;
+			flex-wrap: wrap;
+			margin: 1.5rem 0;
+		}
+
+		/* Burbujas/Recuadros de información */
+		.detail-item {
+			background: rgba(255, 255, 255, 0.9);
+			backdrop-filter: blur(5px);
+			padding: 1rem 1.5rem;
+			border-radius: 20px;
+			border: 2px solid white;
+			min-width: 120px;
+			text-align: center;
+			box-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+			transition: all 0.3s ease;
+		}
+
+		.detail-item:hover {
+			transform: translateY(-3px);
+			box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
+		}
+
+		.detail-label {
+			color: var(--primary-color);
+			font-size: 0.85rem;
+			font-weight: bold;
+			margin-bottom: 0.3rem;
+			display: block;
+		}
+
+		.detail-value {
+			color: #2d3436;
+			font-size: 1.1rem;
+			font-weight: 700;
+			margin: 0;
+		}
+		
+		/* Contenedor de selectores de idioma */
+		.format-selector {
+			display: inline-flex;
+			gap: 1.5rem;
+			background: var(--glass-bg);
+			backdrop-filter: blur(10px);
+			padding: 1rem;
+			border-radius: 20px;
+			border: 2px solid white;
+			box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+		}
+		
+		/* Estilos de los botones de idioma */
+		.format-button {
+			padding: 1rem 2rem;
+			border-radius: 15px;
+			border: 2px solid transparent;
+			background: rgba(255, 255, 255, 0.9);
+			cursor: pointer;
+			transition: all 0.3s ease;
+			font-family: 'Comic Neue', cursive;
+			font-weight: 700;
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+		}
+
+		.format-button.active {
+			background: var(--primary-color);
+			color: white;
+			border-color: white;
+			box-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+		}
+
+		.format-button:hover:not(.active) {
+			transform: translateY(-3px);
+			background: rgba(255, 255, 255, 0.95);
+		}
+		
+		/* Nuevo contenedor para centrar */
+		.language-selector-container {
+			grid-column: 1 / -1; /* Ocupa todo el ancho del grid */
+			text-align: center;
+			margin: 2rem 0;
+		}
+		
+		/* Contenedor principal para las secciones finales */
+		.content-sections {
+			grid-column: 1 / -1;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
+			margin-top: 3rem;
+		}
+		
+		/* Estilos comunes para ambas secciones */
+		.content-box {
+			background: var(--glass-bg);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			padding: 1.5rem;
+			border: 2px solid white;
+			box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+			max-height: 500px;
+			overflow-y: auto;
+		}
+
+		.content-title {
+			color: var(--primary-color);
+			font-size: 1.4rem;
+			margin: 0 0 1.5rem 0;
+			text-align: center;
+			position: sticky;
+			top: 0;
+			background: rgba(255, 255, 255, 0.9);
+			padding: 1rem;
+			border-radius: 15px;
+			z-index: 1;
+		}
+
+		/* Contenedor principal vertical */
+		.manga-library {
+			background: var(--glass-bg);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			padding: 2rem;
+			border: 2px solid white;
+			box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+		}
+
+		/* Grid vertical */
+		.book-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+			gap: 2rem;
+			padding: 1rem;
+		}
+
+		/* Libro vertical */
+		.book-container {
+			position: relative;
+			perspective: 1200px;
+			min-height: 380px;
+		}
+
+		.book-card {
+			background: white;
+			border-radius: 5px 8px 8px 5px;
+			transform-style: preserve-3d;
+			transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+			position: relative;
+			height: auto;
+			overflow: hidden;
+			box-shadow: 0 10px 30px -5px rgba(0,0,0,0.2);
+		}
+
+		/* Portada vertical */
+		.book-cover {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 3/5;
+			object-fit: cover;
+			object-position: center top;
+			border-radius: 3px 6px 6px 3px;
+			transition: all 0.4s ease;
+		}
+
+		/* Efecto de páginas del lado derecho */
+		.book-card::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: -5px;
+			width: 15px;
+			height: 100%;
+			background: linear-gradient(to left, 
+				rgba(255,255,255,0.9) 0%,
+				rgba(245,245,245,0.9) 20%,
+				rgba(230,230,230,0.9) 100%
+			);
+			transform: rotateY(-40deg) translateZ(10px);
+			transition: all 0.4s ease;
+			opacity: 0;
+		}
+
+		/* Burbujas pequeñas */
+		.book-info-bubble {
+			position: absolute;
+			background: var(--primary-color);
+			color: white;
+			padding: 0.6rem;
+			border-radius: 12px;
+			box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+			opacity: 0;
+			transition: all 0.4s ease;
+			width: 100px;
+			text-align: center;
+			z-index: 2;
+			font-size: 0.8rem;
+		}
+
+		.volume-number {
+			top: 10px;
+			left: -15px;
+			transform: scale(0.9);
+		}
+
+		.chapter-count {
+			bottom: 10px;
+			right: 100px;
+			background: var(--secondary-color);
+		}
+
+		/* Efecto hover mejorado */
+		.book-container:hover .book-card {
+			transform: 
+				rotateY(-25deg) 
+				translateZ(15px) 
+				translateX(10px);
+		}
+
+		.book-container:hover .book-card::after {
+			opacity: 1;
+			right: -8px;
+		}
+
+		.book-container:hover .book-info-bubble {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.book-container:hover .book-cover {
+			transform: scale(1.05) translateX(5px);
+			filter: brightness(1.05);
+		}
+
+		/* Contenido burbujas */
+		.info-title {
+			font-size: 0.6rem;
+			margin: 0 0 0.2rem 0;
+			opacity: 0.9;
+			letter-spacing: 0.5px;
+		}
+
+		.info-content {
+			font-size: 0.9rem;
+			font-weight: bold;
+			margin: 0;
+		}
+
+		/* Botón de lectura flotante */
+		.read-button {
+			position: absolute;
+			bottom: 20px;
+			left: 77%;
+			transform: translateX(-50%);
+			background: rgba(255,255,255,0.9);
+			color: var(--primary-color);
+			padding: 0.5rem 1.2rem;
+			border-radius: 20px;
+			border: none;
+			cursor: pointer;
+			opacity: 0;
+			transition: all 0.3s ease;
+			backdrop-filter: blur(5px);
+			box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+		}
+
+		.book-container:hover .read-button {
+			opacity: 1;
+			transform: translateX(-50%) translateY(-5px);
+		}
+
+		.manga-container {
+			background: var(--glass-bg);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			width: 90%;
+			max-width: 1000px;
+			padding: 20px;
+		}
+		
+		.manga-pages {
+			margin: auto;
+			padding: 20px;
+			overflow-y: auto;
+			height: 90vh;
+		}
+
+		/* Contenedor principal de episodios */
+		.episodes-main-container {
+			background: var(--glass-bg);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			padding: 2rem;
+			border: 2px solid white;
+			box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+		}
+
+		/* Subtítulos de sección */
+		.section-title {
+			color: var(--primary-color);
+			font-size: 1.1rem;
+			margin: 0 0 1rem 0;
+			padding-left: 1rem;
+			border-left: 4px solid var(--primary-color);
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+		}
+
+		.section-icon {
+			font-size: 1.3rem;
+		}
+
+		/* Contenedor de cada categoría */
+		.category-container {
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 15px;
+			padding: 2rem;
+			margin-bottom: 1.5rem;
+			box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+		}
+
+		/* Grid de episodios mejorado */
+		.episodes-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+			gap: 1rem;
+		}
+
+		/* Nuevo diseño de cards con imágenes */
+		.episode-card {
+			background-size: cover;
+			background-position: center;
+			border-radius: 15px;
+			padding: 1rem;
+			position: relative;
+			transition: all 0.3s ease;
+			cursor: pointer;
+			text-align: center;
+			min-height: 150px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			overflow: hidden;
+			box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+		}
+
+		.episode-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+			z-index: 1;
+		}
+
+		.episode-content {
+			position: relative;
+			z-index: 2;
+			color: white;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.episode-type {
+			background: var(--primary-color);
+			color: white;
+			padding: 4px 10px;
+			border-radius: 5px;
+			font-size: 0.7rem;
+			align-self: center;
+			margin-bottom: 10px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.episode-number {
+			font-size: 1.5rem;
+			font-weight: 800;
+			color: white;
+			text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+			margin: 0 0 8px 0;
+			line-height: 1;
+		}
+
+		.episode-title {
+			font-size: 1rem;
+			margin: 0;
+			flex-grow: 1;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			padding-bottom: 40px; /* Espacio para el footer */
+		}
+
+		.episode-meta {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 0.9rem;
+			opacity: 0.9;
+		}
+
+		.episode-footer {
+			position: absolute;
+			bottom: 15px;
+			left: 15px;
+			right: 15px;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+		}
+
+		.episode-duration {
+			font-size: 0.8rem;
+			opacity: 0.9;
+			background: rgba(0,0,0,0.4);
+			padding: 4px 8px;
+			border-radius: 4px;
+		}
+
+		.episode-play {
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			background: rgba(255,255,255,0.9);
+			color: var(--primary-color);
+			border: none;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			backdrop-filter: blur(5px);
+			border: 1px solid rgba(255,255,255,0.3);
+			box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+		}
+
+		.episode-play:hover {
+			transform: scale(1.1);
+			background: white;
+		}
+
+		/* Efectos hover avanzados */
+		.episode-card:hover {
+			transform: translateY(-7px) scale(1.03);
+			box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+		}
+
+		.episode-card:hover::before {
+			background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+		}
+		
+		/* === Contenido no disponible === */
+		.content-unavailable {
+			position: relative;
+			opacity: 0.6;
+			filter: grayscale(1);
+			pointer-events: none;
+		}
+
+		.content-unavailable::after {
+			content: "Contenido no disponible en este idioma";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: rgba(0,0,0,0.8);
+			color: white;
+			padding: 8px 16px;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			text-align: center;
+			width: 80%;
+			z-index: 2
+		}
+
+		/* === Video Modal Modernizado === */
+		.video-modal {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 90%;
+			max-width: 1000px;
+			height: 70vh;
+			z-index: 9999;
+			border-radius: 20px;
+			overflow: hidden;
+			display: none;
+			background: var(--glass-bg) !important;
+			backdrop-filter: blur(16px) !important;
+			-webkit-backdrop-filter: blur(16px) !important;
+			border: 1px solid var(--glass-border) !important;
+			box-shadow: var(--glass-shadow) !important;
+		}
+
+		.video-container {
+			width: 100%;
+			height: 100%;
+			background: transparent;
+			position: relative;
+			cursor: auto;
+		}
+
+		.video-container.cursor-hidden {
+			cursor: none;
+		}
+
+		.video-player {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		/* Controles personalizados */
+		.controls-container {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 15px 20px;
+			-webkit-backdrop-filter: blur(10px);
+			background: var(--glass-bg) !important;
+			border-top: 1px solid var(--glass-border) !important;
+			backdrop-filter: blur(10px) !important;
+			transition: all 0.5s ease !important;
+		}
+
+		.progress-container {
+			height: 4px;
+			background: rgba(255,255,255,0.2);
+			margin-bottom: 12px;
+			cursor: pointer;
+			border-radius: 2px;
+		}
+
+		.progress-bar {
+			height: 100%;
+			background: var(--primary-color);
+			width: 0;
+			transition: width 0.1s linear;
+			border-radius: 2px;
+		}
+
+		.buttons-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 15px;
+		}
+
+		.left-controls, .right-controls {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.play-pause, .cc-button, .fullscreen {
+			color: white;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			cursor: pointer;
+			border-radius: 8px;
+			align-items: center;
+			justify-content: center;
+			backdrop-filter: blur(5px);
+			background: rgba(255,255,255,0.05) !important;
+			border: 1px solid var(--glass-border) !important;
+			transition: all 0.3s ease !important;
+		}
+
+		.play-pause:hover, .cc-button:hover, .fullscreen:hover {
+			transform: scale(1.05);
+			box-shadow: 0 0 10px var(--primary-color);
+			background: var(--primary-color) !important;
+		}
+
+		.time-display {
+			color: white;
+			font-family: 'Roboto', sans-serif;
+			font-size: 0.9em;
+			text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		}
+
+		.volume-control {
+			height: 4px;
+			background: rgba(255,255,255,0.1);
+			-webkit-appearance: none;
+			border-radius: 2px;
+			width: 100px;
+		}
+
+		.volume-control::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 14px;
+			height: 14px;
+			background: var(--primary-color);
+			border-radius: 50%;
+			border: 2px solid white;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+		}
+
+		.close-modal {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			background: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: 50%;
+			width: 32px;
+			height: 32px;
+			cursor: pointer;
+			z-index: 10000;
+			transition: all 0.3s ease;
+		}
+
+		.close-modal:hover {
+			transform: scale(1.1);
+		}
+
+		.loading {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+			display: none;
+			background: rgba(0,0,0,0.7);
+			padding: 12px 24px;
+			border-radius: 8px;
+			backdrop-filter: blur(10px);
+		}
+
+		.center-play {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			backdrop-filter: blur(10px);
+			cursor: pointer;
+			opacity: 0;
+			transition: all 0.3s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--glass-bg) !important;
+			border: 2px solid var(--glass-border) !important;
+		}
+
+		.center-play.visible {
+			opacity: 1;
+		}
+
+		.center-play::after {
+			content: '▶';
+			color: white;
+			font-size: 30px;
+			margin-left: 3px;
+		}
+
+		.center-play.playing::after {
+			content: '⏸';
+			margin-left: 0;
+		}
+		
+		/* ocultar menu video */
+		.video-modal .controls-container,
+		.video-modal .close-modal {
+			opacity: 1;
+			transition: opacity 0.3s ease, visibility 0.3s ease;
+		}
+
+		.video-modal:not(.controls-visible) .controls-container,
+		.video-modal:not(.controls-visible) .close-modal {
+			visibility: hidden;
+			pointer-events: none;
+			opacity: 0 !important;
+			transform: translateY(100%) !important;
+		}
+
+		/* Ocultamiento/mostrado del modal */
+		.hidden { display: none; }
+		.manga-modal { display: none; }
+		.manga-modal.flex { display: flex; }
+
+		/* Fondo y contenedor principal */
+		.manga-modal {
+		  position: fixed;
+		  inset: 0;
+		  background: rgba(0, 0, 0, 0.8);
+		  align-items: center;
+		  justify-content: center;
+		  z-index: 1000;
+		}
+		.manga-modal .bg-gray-900 {
+		  background: #1a1a1a;
+		}
+
+		/* Contenedor interno */
+		.manga-modal > div {
+		  border-radius: 1rem; /* 2xl */
+		  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+		  padding: 1rem;       /* p-4 */
+		  max-width: -webkit-fill-available;      /* max-w-5xl */
+		  width: -webkit-fill-available;
+		  height: -webkit-fill-available;
+		  display: flex;
+		  flex-direction: column;
+		}
+
+		/* Botón cerrar */
+		.close-manga {
+		  border: none;
+		  font-size: 1.5rem;
+		  cursor: pointer;
+		  position: absolute;
+		  top: 10px;
+		  right: 10px;
+		  background: var(--primary-color);
+		  color: white;
+		  padding: 8px 16px;
+		  border-radius: 20px;
+		  cursor: pointer;
+		}
+
+		/* Controles superiores */
+		.manga-modal .mode-btn {
+		  background: #2d2d2d; /* bg-gray-700 */
+		  color: #fff;
+		  border: none;
+		  padding: 0.5rem 1rem;
+		  border-radius: 0.375rem; /* rounded */
+		  cursor: pointer;
+		}
+		.manga-modal .page-counter {
+		  margin-left: auto;
+		  color: #ccc; /* text-gray-300 */
+		  line-height: 1.5rem;
+		}
+
+		/* Contenedor de páginas */
+		.manga-pages {
+		  flex: 1;
+		  transition: all 0.3s ease;
+		  overscroll-behavior: contain;
+		}
+		.manga-pages.vertical {
+		  display: flex;
+		  flex-direction: column;
+		  overflow-y: auto;
+		  scroll-behavior: smooth;
+		}
+		.manga-pages.horizontal {
+		  display: flex;
+		  overflow-x: auto;
+		  scroll-snap-type: x mandatory;
+		  scroll-behavior: smooth;
+		  -ms-overflow-style: none;  /* IE/Edge */
+		  scrollbar-width: none;     /* Firefox */
+		}
+		.manga-pages.horizontal::-webkit-scrollbar {
+		  display: none;            /* Chrome/Safari */
+		}
+
+		/* Cada página */
+		.page-item {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  flex-shrink: 0;
+		}
+		.vertical .page-item {
+		  height: 100vh;
+		}
+		.horizontal .page-item {
+		  scroll-snap-align: start;
+		  margin-right: 0.5rem;
+		}
+
+		/* Imágenes */
+		.manga-pages img {
+		  max-width: 100%;
+		  max-height: 100%;
+		  object-fit: contain;
+		  border-radius: 0.5rem;          /* rounded */
+		  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+		  transition: transform 0.3s;
+		}
+		/* Zoom opcional */
+		.manga-pages img.zoomed {
+		  transform: scale(1.2);
+		}
+
+		/* Controles inferiores */
+		.manga-modal .manga-nav {
+		  margin-top: 1rem;
+		  display: flex;
+		  justify-content: center;
+		  gap: 1rem;
+		}
+		.manga-modal .manga-nav button {
+		  background: #2d2d2d;
+		  color: #fff;
+		  border: none;
+		  padding: 0.5rem 1rem;
+		  border-radius: 0.375rem;
+		  cursor: pointer;
+		}
+		
+		.no-scroll {
+		  overflow: hidden;
+		}
+
+		/* Mejoras responsive */
+		@media (max-width: 1024px) {
+			.anime-container {
+				grid-template-columns: 1fr;
+				margin: 40px 20px;
+			}
+			
+			.anime-cover {
+				max-width: 500px;
+				margin: 0 auto;
+			}
+			
+			.anime-info {
+				padding: 1.5rem;
+			}
+			
+			.content-sections {
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+		}
+		
+		@media (max-width: 768px) {
+			.detail-nav {
+				position: sticky;
+				top: 0;
+				border-radius: 0;
+				left: 0;
+				right: 0;
+			}
+			
+			.site-title-detail {
+				font-size: 1.5rem;
+			}
+			
+			.back-button {
+				padding: 0.6rem 1.2rem;
+				font-size: 0.9rem;
+			}
+			
+	        .anime-container {
+				margin-top: 90px;
+			}
+			
+			.info-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+			
+			.anime-description {
+				font-size: 0.95rem;
+				padding: 1rem;
+			}
+			
+			.detail-item {
+				flex: 1 1 120px;
+				padding: 0.8rem 1rem;
+			}
+			
+			.detail-label {
+				font-size: 0.75rem;
+			}
+			
+			.detail-value {
+				font-size: 1rem;
+			}
+			
+			.format-selector {
+				flex-direction: column;
+				width: 100%;
+			}
+			
+			.format-button {
+				justify-content: center;
+				width: 100%;
+			}
+			
+			.episodes-grid {
+				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			}
+			
+			.episode-title {
+				font-size: 0.9rem;
+				-webkit-line-clamp: 2;
+			}
+			
+			.episode-number {
+				font-size: 1.8rem;
+			}
+			
+			.book-grid {
+				grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+			}
+			
+			.book-cover {
+				aspect-ratio: 3/5;
+			}
+			
+			.book-info-bubble {
+				opacity: 1; /* Siempre visibles en móvil */
+				transform: translateX(0);
+				padding: 0.1rem;
+				font-size: 0.1rem;
+			}
+			
+			.volume-number {
+				left: -15px;
+				top: 5px;
+			}
+			
+			.chapter-count {
+				right: 180px;
+				bottom: 17px;
+			}
+			
+			.read-button {
+				opacity: 1;
+				left: 210px;
+				bottom: 15px;
+			}
+			
+		}
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+		
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+	<nav class="detail-nav">
+		<h1 class="site-title-detail">Remastersanime4k</h1>
+		<div style="flex-grow: 1;"></div> 
+		<a href="index.html" class="back-button">← Volver</a>
+	</nav>
+
+    <!-- Contenido principal -->
+    <div class="anime-container">
+        <div class="anime-cover">
+            <img src="https://cdn.myanimelist.net/images/anime/1559/124739l.jpg" 
+                 alt="Sasuke サスケ">
+        </div>
+		
+		<!-- Sección de información -->
+        <div class="anime-info">
+            <h2>Sasuke es el hijo de Daisuke Ozaru, un ninja excepcionalmente habilidoso. Tras la derrota de su señor, Yukimura Sanada, los ninjas de Tokugawa y Hattori comienzan a perseguir a todos los enemigos que aún viven: esto obliga a Ozaru y Sasuke a abandonar su hogar y embarcarse en una lucha desesperada por sobrevivir. En este entorno de peligro constante, la venganza, la ira, la lealtad y el dolor se entrelazan para formar la trama de esta historia, que explora los aspectos más oscuros del alma humana mientras sigue el crecimiento y las pruebas del joven Sasuke.</h2>
+            <!-- burbujas informativas... -->
+			<div class="detail-boxes">
+			<div class="detail-item">
+				<span class="detail-label">ESTADO</span>
+				<p class="detail-value">Finalizado</p>
+			</div>
+			<div class="detail-item">
+				<span class="detail-label">TEMPORADAS</span>
+				<p class="detail-value">1</p>
+			</div>
+			<div class="detail-item">
+				<span class="detail-label">EPISODIOS</span>
+				<p class="detail-value">29</p>
+			</div>
+			<div class="detail-item">
+				<span class="detail-label">AÑO</span>
+				<p class="detail-value">1968</p>
+			</div>
+			<div class="detail-item">
+				<span class="detail-label">VOLÚMENES</span>
+				<p class="detail-value">15</p>
+			</div>
+			<div class="detail-item">
+				<span class="detail-label">CAPÍTULOS</span>
+				<p class="detail-value">55</p>
+			</div>
+			</div>
+			
+		</div>
+		
+		<!-- Sección de idiomas -->
+		<div class="language-selector-container">
+		<div class="format-selector">
+			<button class="format-button active" data-lang="jp">🇯🇵 Japonés</button>
+			<button class="format-button" data-lang="latino">🇲🇽 Español Latino</button>
+		</div>
+		</div>
+	</div>
+	
+	
+	<div class="full-width-section">
+		<div class="manga-library">	
+			<h3 class="section-title">
+				<span class="section-icon">📖</span>Mangas</h3>
+			
+			<div class="book-grid">
+				<!-- Volumen 1 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/85/sasuke_1968058.webp?1655633082" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+
+				<!-- Volumen 2 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/95/sasuke_2968059.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 3 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/75/sasuke_3968057.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 4 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/65/sasuke_4968056.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				
+				<!-- Volumen 5 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/55/sasuke_5968055.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 6 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/45/sasuke_6968054.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+
+				<!-- Volumen 7 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/35/sasuke_7968053.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 8 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/25/sasuke_8968052.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 9 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/15/sasuke_9968051.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				
+				<!-- Volumen 10 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/05/sasuke_10968050.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 11 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/84/sasuke_11968048.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+
+				<!-- Volumen 12 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/94/sasuke_12968049.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 13 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/74/sasuke_13968047.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 14 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/64/sasuke_14968046.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+				<!-- Volumen 15 -->
+				<div class="book-container"
+						data-srcjp='["urlA.jpg", "urlB.jpg", ...]'
+						data-srclatino='["urlA.jpg", "urlB.jpg", ...]'>
+					<div class="book-card">
+						<img src="https://www.nautiljon.com/images/manga_volumes/12/54/sasuke_15968045.webp?0" 
+							 class="book-cover" 
+							 alt="Volumen 1">
+						
+						<div class="book-info-bubble volume-number">
+							<p class="info-title">Volumen</p>
+							<p class="info-content">#01</p>
+						</div>
+						
+						<div class="book-info-bubble chapter-count">
+							<p class="info-title">Capítulos</p>
+							<p class="info-content">1-7</p>
+						</div>
+						
+						<button class="read-button">Leer</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+	<div class="full-width-section">
+		<!-- Sección de Episodios -->
+		<div class="episodes-main-container">
+			<h3 class="section-title">Anime</h3>
+			<!-- Temporada Principal -->
+			<div class="category-container">
+				<h3 class="section-title">Temporada 1</h3>
+				<div class="episodes-grid">
+					<!-- Episodio 1 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp="https://rumble.com/hls-vod/6q9ujv/playlist.m3u8?u=3&b=0"
+						 data-srclatino="https://1a-1791.com/video/s8/2/9/k/j/2/9kj2t.jaa.mp4?u=3&b=0"
+						 data-subtitles="https://1a-1791.com/video/fww1/4c/s8/11/P/-/v/E/P-vEy.dZER8d.vtt"
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Episodio 2 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 3 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 4 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 5 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 6 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 7 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 8 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 9 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 10 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 11 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 12 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 13 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 14 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 15 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 16 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 17 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 18 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 19 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 20 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 21 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 22 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 23 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 24 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 25 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 26 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 27 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 28 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Episodio 29 -->
+					<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type">EPISODIO</span>
+							<h4 class="episode-number">1</h4>
+							<p class="episode-title">Crueldad</p>
+							<div class="episode-meta">
+								<span>24 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div>
+					
+					<!-- OVA con estilo diferente -->
+				<!--	<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type" style="background: var(--secondary-color)">OVA</span>
+							<h4 class="episode-number">S1</h4>
+							<p class="episode-title">Historia Alterna</p>
+							<div class="episode-meta">
+								<span>45 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div> -->
+					
+					<!-- Pelicula con estilo diferente -->
+				<!--	<div class="episode-card" 
+						 data-lid="ep1"
+						 data-srcjp=""
+						 data-srclatino=""
+						 data-subtitles=""
+						 style="background-image: url('https://cdn.myanimelist.net/images/anime/4/30805l.jpg')">
+						<div class="episode-content">
+							<span class="episode-type" style="background: var(--secondary-color)">Pelicula</span>
+							<h4 class="episode-number">S1</h4>
+							<p class="episode-title">Historia Alterna</p>
+							<div class="episode-meta">
+								<span>45 min</span>
+								<button class="episode-play">▶</button>
+							</div>
+						</div>
+					</div> -->
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- === Modal manga === -->
+	<!-- Modal de Lector de Manga -->
+	<div class="manga-modal hidden fixed inset-0 bg-black items-center justify-center z-1000" style=".manga-modal">
+	  <div class="bg-gray-900 rounded-2xl shadow-xl p-4 flex flex-col" style=".manga-modal > div">
+		<!-- Botón de cerrar -->
+		<button class="close-manga self-end text-white text-2xl">&times;</button>
+
+		<!-- Controles de orientación y contador -->
+		<div class="flex gap-2 mb-4 items-center">
+		  <button class="mode-btn px-3 py-1 bg-gray-700 text-white rounded" data-mode="vertical">
+			⬇︎ Vertical
+		  </button>
+		  <button class="mode-btn px-3 py-1 bg-gray-700 text-white rounded" data-mode="horizontal">
+			➡︎ Horizontal
+		  </button>
+		  <span class="ml-auto text-gray-300 page-counter">0/0</span>
+		</div>
+
+		<!-- Contenedor de páginas -->
+		<div class="manga-pages vertical overflow-y-auto flex-1">
+		  <!-- Aquí se insertan dinámicamente las <div class="page-item"><img…></div> -->
+		</div>
+
+		<!-- Navegación anterior/siguiente -->
+		<div class="manga-nav mt-4 flex justify-center gap-4">
+		  <button class="prev-page">&#8249; Anterior</button>
+		  <button class="next-page">Siguiente &#8250;</button>
+		</div>
+	  </div>
+	</div>
+	
+		<!-- === Modal Video === -->
+	<div class="video-modal">
+		<div class="video-container">
+			<div class="loading">Cargando...</div>
+			<div class="center-play"></div>
+		<!--	 <div class="buffer-info" style="position: absolute; bottom: 10px; right: 10px; color: white; font-size: 12px; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px;">
+			  Buffer: <span id="buffer-time">0</span>s
+			</div> -->
+			<video class="video-player">
+				<!-- Las fuentes de video se inyectarán dinámicamente -->
+			</video>
+			<div class="controls-container">
+				<div class="controls">
+					<div class="progress-container" id="progress-container">
+						<div class="progress-bar"></div>
+					</div>
+					<div class="buttons-container">
+						<div class="left-controls">
+							<button class="play-pause">▶</button>
+							<span class="time-display"><span class="current-time">00:00</span> / <span class="duration">00:00</span></span>
+						</div>
+						<div class="right-controls">
+							<button class="cc-button" title="Subtítulos">🇪🇸</button>
+							<input type="range" class="volume-control" min="0" max="1" step="0.1" value="1">
+							<button class="fullscreen">⛶</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="close-modal">X</button>
+		</div>
+	</div>
+	
+ <script>
+    const contentManager = {
+        currentLang: 'jp',
+        isPlaying: false,
+        lastScroll: 0,
+        controls: {},
+        videoElement: null,
+        playerModal: null,
+        textTrack: null,
+        controlsTimeout: null,
+        videoContainer: null,
+        hlsInstance: null,
+		mangaModal: null,
+	    mangaPages: null,
+	    mangaCloseBtn: null,
+	    mangaNextBtn: null,
+	    mangaPrevBtn: null,
+	    mangaModeBtns: null,
+	    mangaCounter: null,
+
+        init() {
+            this.cacheElements();
+            this.setupEventListeners();
+            this.addScrollListener();
+            this.initializeVolume();
+            this.setupVideoTextTracks();
+        },
+
+        cacheElements() {
+            this.playerModal = document.querySelector('.video-modal');
+            this.videoElement = this.playerModal.querySelector('video');
+            this.videoContainer = this.playerModal.querySelector('.video-container');
+			this.mangaModal    = document.querySelector('.manga-modal');
+			this.mangaPages    = this.mangaModal.querySelector('.manga-pages');
+			this.mangaCloseBtn = this.mangaModal.querySelector('.close-manga');
+			this.mangaNextBtn  = this.mangaModal.querySelector('.next-page');
+			this.mangaPrevBtn  = this.mangaModal.querySelector('.prev-page');
+			this.mangaModeBtns = this.mangaModal.querySelectorAll('.mode-btn');
+			this.mangaCounter  = this.mangaModal.querySelector('.page-counter');
+            this.controls = {
+                playPause: this.playerModal.querySelector('.play-pause'),
+                volume: this.playerModal.querySelector('.volume-control'),
+                progress: this.playerModal.querySelector('.progress-bar'),
+                currentTime: this.playerModal.querySelector('.current-time'),
+                duration: this.playerModal.querySelector('.duration'),
+                closeBtn: this.playerModal.querySelector('.close-modal'),
+                centerPlay: this.playerModal.querySelector('.center-play'),
+                loading: this.playerModal.querySelector('.loading'),
+                fullscreen: this.playerModal.querySelector('.fullscreen'),
+                ccButton: this.playerModal.querySelector('.cc-button')
+            };
+        },
+
+        initializeVolume() {
+            const savedVolume = localStorage.getItem('videoVolume') || 1;
+            this.videoElement.volume = parseFloat(savedVolume); // Conversión a número
+            this.controls.volume.value = savedVolume;
+        },
+
+		setupEventListeners() {
+		  // Cambio de idioma
+		  document.querySelectorAll('.format-button').forEach(btn => {
+			btn.addEventListener('click', (e) => {
+			  e.preventDefault();
+			  this.handleLanguageChange(e.target);
+			});
+		  });
+
+		  // Click general: vídeo o manga
+		  document.addEventListener('click', (e) => {
+			const playButton = e.target.closest('.episode-play, .read-button');
+			if (playButton) this.handleContentClick(e);
+		  });
+
+		  // Controles de vídeo
+		  this.controls.playPause.addEventListener('click', () => this.togglePlay());
+		  this.controls.volume.addEventListener('input', (e) => this.setVolume(e.target.value));
+		  this.controls.closeBtn.addEventListener('click', () => this.closeVideoPlayer());
+		  this.controls.fullscreen.addEventListener('click', () => this.toggleFullscreen());
+		  this.controls.ccButton.addEventListener('click', () => this.toggleSubtitles());
+
+		  this.videoContainer.addEventListener('click', (e) => {
+			if (e.target === this.videoContainer || e.target === this.videoElement) {
+			  this.togglePlay();
+			}
+		  });
+
+		  this.controls.centerPlay.addEventListener('click', (e) => {
+			e.stopPropagation();
+			this.togglePlay();
+		  });
+
+		  this.playerModal.querySelector('.progress-container')
+			.addEventListener('click', (e) => this.seek(e));
+
+		  this.videoElement.addEventListener('timeupdate', () => this.updateProgress());
+		  this.videoElement.addEventListener('loadedmetadata', () => this.updateDuration());
+		  this.videoElement.addEventListener('waiting', () => this.showLoading(true));
+		  this.videoElement.addEventListener('playing', () => this.showLoading(false));
+		  this.videoElement.addEventListener('play', () => {
+			this.controls.centerPlay.classList.remove('visible');
+			this.playerModal.classList.remove('paused');
+		  });
+		  this.videoElement.addEventListener('pause', () => {
+			this.controls.centerPlay.classList.add('visible');
+			this.playerModal.classList.add('paused');
+		  });
+
+		  document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+		  this.playerModal.addEventListener('mousemove', () => this.showControls());
+		  this.playerModal.addEventListener('mouseleave', () => this.hideControls());
+		  this.playerModal.addEventListener('dblclick', () => this.toggleFullscreen());
+
+		  // Cerrar lector de manga con botón ×
+		  this.mangaCloseBtn.addEventListener('click', () => {
+			this.mangaModal.classList.add('hidden');
+			this.mangaModal.classList.remove('flex');
+			document.body.classList.remove('no-scroll');
+		  });
+
+		  // Teclado en lector de manga
+		  document.addEventListener('keydown', (e) => {
+			if (!this.mangaModal.classList.contains('flex')) return;
+
+			const vertical   = this.mangaPages.classList.contains('vertical');
+			const horizontal = this.mangaPages.classList.contains('horizontal');
+
+			switch (e.key) {
+			  case 'ArrowDown':
+				if (vertical && this._mangaIndex < this._mangaTotal - 1) {
+				  this._mangaIndex++;
+				  this._updateMangaView();
+				}
+				e.preventDefault();
+				break;
+			  case 'ArrowUp':
+				if (vertical && this._mangaIndex > 0) {
+				  this._mangaIndex--;
+				  this._updateMangaView();
+				}
+				e.preventDefault();
+				break;
+			  case 'ArrowRight':
+				if (horizontal && this._mangaIndex < this._mangaTotal - 1) {
+				  this._mangaIndex++;
+				  this._updateMangaView();
+				}
+				e.preventDefault();
+				break;
+			  case 'ArrowLeft':
+				if (horizontal && this._mangaIndex > 0) {
+				  this._mangaIndex--;
+				  this._updateMangaView();
+				}
+				e.preventDefault();
+				break;
+			  case 'Escape':
+				this.mangaModal.classList.add('hidden');
+				this.mangaModal.classList.remove('flex');
+				document.body.classList.remove('no-scroll');
+				e.preventDefault();
+				break;
+			}
+		  });
+
+		  // Scroll con rueda para manga
+		  this.mangaPages.addEventListener('wheel', e => {
+			if (!this.mangaModal.classList.contains('flex')) return;
+
+			const isHorizontal = this.mangaPages.classList.contains('horizontal');
+			const delta = e.deltaY;
+
+			if (isHorizontal) {
+			  const maxScroll = this.mangaPages.scrollWidth - this.mangaPages.clientWidth;
+			  const next = this.mangaPages.scrollLeft + delta;
+			  if (next >= 0 && next <= maxScroll) {
+				e.preventDefault();
+				this.mangaPages.scrollLeft = next;
+			  }
+			} else {
+			  const maxScroll = this.mangaPages.scrollHeight - this.mangaPages.clientHeight;
+			  const next = this.mangaPages.scrollTop + delta;
+			  if (next >= 0 && next <= maxScroll) {
+				e.preventDefault();
+				this.mangaPages.scrollTop = next;
+			  }
+			}
+		  }, { passive: false });
+
+		  // Detectar página visible y actualizar contador
+		  this.mangaPages.addEventListener('scroll', () => {
+			if (!this.mangaModal.classList.contains('flex')) return;
+
+			const pageItems = Array.from(this.mangaPages.querySelectorAll('.page-item'));
+			let closestIndex = 0;
+			let closestDistance = Infinity;
+
+			pageItems.forEach((item, index) => {
+			  const rect = item.getBoundingClientRect();
+			  const containerRect = this.mangaPages.getBoundingClientRect();
+
+			  const centerContainer = this.mangaPages.classList.contains('horizontal')
+				? containerRect.left + containerRect.width / 2
+				: containerRect.top + containerRect.height / 2;
+
+			  const centerItem = this.mangaPages.classList.contains('horizontal')
+				? rect.left + rect.width / 2
+				: rect.top + rect.height / 2;
+
+			  const distance = Math.abs(centerContainer - centerItem);
+			  if (distance < closestDistance) {
+				closestDistance = distance;
+				closestIndex = index;
+			  }
+			});
+
+			if (closestIndex !== this._mangaIndex) {
+			  this._mangaIndex = closestIndex;
+			  this._updateMangaCounter();
+			}
+		  });
+		  
+			this.videoElement.addEventListener('timeupdate', () => this.updateBufferInfo());
+			this.videoElement.addEventListener('progress', () => this.updateBufferInfo());
+		},
+		
+		handleKeyboard(e) {
+			e.preventDefault(); // Evitar acciones por defecto (ej: scroll)
+			// Control de reproducción
+			if (e.key === ' ' || e.key === 'k') { // Barra espaciadora o K
+				this.togglePlay();
+			}
+			// Navegación por tiempo
+			if (e.key === 'ArrowLeft') { // Flecha izquierda: retroceder 5s
+				this.videoElement.currentTime = Math.max(0, this.videoElement.currentTime - 5);
+			}
+			if (e.key === 'ArrowRight') { // Flecha derecha: avanzar 5s
+				this.videoElement.currentTime = Math.min(this.videoElement.duration, this.videoElement.currentTime + 5);
+			}
+			// Control de volumen
+			if (e.key === 'ArrowUp') { // Flecha arriba: aumentar volumen
+				this.setVolume(Math.min(this.videoElement.volume + 0.1, 1));
+			}
+			if (e.key === 'ArrowDown') { // Flecha abajo: disminuir volumen
+				this.setVolume(Math.max(this.videoElement.volume - 0.1, 0));
+			}
+			// Otras funciones
+			if (e.key === 'f') { // Tecla F: pantalla completa
+				this.toggleFullscreen();
+			}
+			if (e.key === 'c') { // Tecla C: subtítulos
+				this.toggleSubtitles();
+			}
+			if (e.key === 'm') { // Tecla M: silenciar
+				this.videoElement.muted = !this.videoElement.muted;
+				this.controls.volume.value = this.videoElement.muted ? 0 : this.videoElement.volume;
+			}
+		},
+
+        togglePlay() {
+            if (this.videoElement.paused) {
+                this.videoElement.play();
+                this.controls.centerPlay.classList.remove('visible');
+            } else {
+                this.videoElement.pause();
+                this.controls.centerPlay.classList.add('visible');
+            }
+            this.controls.playPause.textContent = this.videoElement.paused ? '▶' : '⏸';
+            this.controls.centerPlay.classList.toggle('playing', !this.videoElement.paused);
+            if (this.videoElement.paused) {
+                this.showControls();
+            } else {
+                this.hideControls();
+                this.resetControlsTimeout();
+            }
+        },
+
+        resetControlsTimeout() {
+            clearTimeout(this.controlsTimeout);
+            this.controlsTimeout = setTimeout(() => {
+                if (!this.videoElement.paused) {
+                    this.playerModal.classList.remove('controls-visible');
+                }
+            }, 2000);
+        },
+
+		setupVideoTextTracks() {
+			const tracks = this.videoElement.textTracks;
+			if (tracks.length > 0) {
+				this.textTrack = tracks[0];
+				this.textTrack.mode = 'hidden';
+				this.controls.ccButton.style.display = 'flex';
+			} else {
+				this.controls.ccButton.style.display = 'none';
+			}
+		},
+
+		toggleSubtitles() {
+			const tracks = this.videoElement.textTracks;
+			if (tracks.length > 0) {
+				const track = tracks[0]; // Tomar la primera pista
+				track.mode = track.mode === 'showing' ? 'hidden' : 'showing';
+				this.controls.ccButton.classList.toggle('active');
+			}
+		},
+
+        showControls() {
+            this.playerModal.classList.add('controls-visible');
+            clearTimeout(this.controlsTimeout);
+            this.controlsTimeout = setTimeout(() => {
+                this.playerModal.classList.remove('controls-visible');
+            }, 1500);
+        },
+
+        hideControls() {
+            if (!this.videoElement.paused) {
+                this.playerModal.classList.remove('controls-visible');
+            }
+        },
+
+        showLoading(show) {
+            this.controls.loading.style.display = show ? 'block' : 'none';
+        },
+
+        updateProgress() {
+            const progress = (this.videoElement.currentTime / this.videoElement.duration) * 100;
+            this.controls.progress.style.width = `${progress}%`;
+            this.controls.currentTime.textContent = this.formatTime(this.videoElement.currentTime);
+        },
+		
+		updateBufferInfo() {
+		  if (!this.videoElement) return;
+
+		  const buffered = this.videoElement.buffered;
+		  const currentTime = this.videoElement.currentTime;
+		  let bufferEnd = 0;
+
+		  for (let i = 0; i < buffered.length; i++) {
+			if (buffered.start(i) <= currentTime && currentTime <= buffered.end(i)) {
+			  bufferEnd = buffered.end(i);
+			  break;
+			}
+		  }
+
+		  const bufferTime = Math.max(0, bufferEnd - currentTime).toFixed(2);
+		  const bufferDisplay = document.getElementById('buffer-time');
+
+		  if (bufferDisplay) {
+			bufferDisplay.textContent = bufferTime;
+
+			// Cambiar color según valor
+			const parent = bufferDisplay.parentElement;
+			if (parent) {
+			  if (bufferTime < 5) {
+				parent.style.color = '#f87171'; // rojo claro
+			  } else if (bufferTime < 10) {
+				parent.style.color = '#facc15'; // amarillo
+			  } else {
+				parent.style.color = '#4ade80'; // verde
+			  }
+			}
+		  }
+		},
+
+        updateDuration() {
+            this.controls.duration.textContent = this.formatTime(this.videoElement.duration);
+        },
+
+        addScrollListener() {
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                const navbar = document.querySelector('.detail-nav');
+                navbar.classList.toggle('nav-hidden', currentScroll > 100 && currentScroll > this.lastScroll);
+                this.lastScroll = currentScroll;
+            }, { passive: true });
+        },
+
+        handleLanguageChange(button) {
+            document.querySelectorAll('.format-button').forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+            this.currentLang = button.dataset.lang;
+            this.updateContentVisibility();
+        },
+
+        updateContentVisibility() {
+            document.querySelectorAll('[data-lid]').forEach(item => {
+                const srcKey = `src${this.currentLang}`;
+                const available = item.dataset[srcKey];
+                item.classList.toggle('content-unavailable', !available);
+                if (item.classList.contains('book-container') && available) {
+                    item.querySelector('img').src = item.dataset[srcKey];
+                }
+            });
+			
+			document.querySelectorAll('.book-container').forEach(book => {
+				const langAttr = `data-src${this.currentLang}`;
+				const available = book.getAttribute(langAttr);
+				book.classList.toggle('content-unavailable', !available);
+			});
+        },
+
+		handleContentClick(e) {
+			e.stopPropagation();
+
+			// 1) Detectar Manga
+			const book = e.target.closest('.book-container');
+			if (book && !book.classList.contains('content-unavailable')) {
+				this.openMangaReader(book);
+				return;
+			}
+
+			// 2) Detectar Vídeo
+			const card = e.target.closest('.episode-card[data-lid]');
+			if (!card || card.classList.contains('content-unavailable')) return;
+
+			const videoUrl    = card.dataset[`src${this.currentLang}`];
+			const subtitleUrl = card.dataset.subtitles;
+			if (!videoUrl) return;
+
+			if (card.classList.contains('episode-card')) {
+				this.playVideo(videoUrl, subtitleUrl);
+			} else {
+				window.open(videoUrl, '_blank');
+			}
+		},
+
+        seek(e) {
+            const rect = e.target.getBoundingClientRect();
+            const pos = (e.clientX - rect.left) / rect.width;
+            this.videoElement.currentTime = pos * this.videoElement.duration;
+        },
+
+		formatTime(seconds) {
+			const hrs = Math.floor(seconds / 3600);
+			const mins = Math.floor((seconds % 3600) / 60);
+			const secs = Math.floor(seconds % 60);
+
+			const hStr = hrs > 0 ? `${hrs}:` : '';
+			const mStr = (hrs > 0 && mins < 10) ? `0${mins}` : `${mins}`;
+			const sStr = secs < 10 ? `0${secs}` : `${secs}`;
+
+			return `${hStr}${mStr}:${sStr}`;
+		},
+
+        setVolume(value) {
+            this.videoElement.volume = value;
+            this.controls.volume.value = value;
+            localStorage.setItem('videoVolume', value);
+        },
+		
+        monitorBuffer() {
+            if (!this.videoElement || this.videoElement.paused) return;
+
+            const buffered = this.videoElement.buffered;
+            const currentTime = this.videoElement.currentTime;
+            let bufferEnd = 0;
+
+            for (let i = 0; i < buffered.length; i++) {
+                if (buffered.start(i) <= currentTime && buffered.end(i) >= currentTime) {
+                    bufferEnd = buffered.end(i);
+                    break;
+                }
+            }
+
+            const bufferedAhead = bufferEnd - currentTime;
+
+            if (bufferedAhead < 5 && this.videoElement.readyState < 3) {
+                this.videoElement.play().catch(() => {});
+            }
+        },
+
+		playVideo(videoUrl, subtitleUrl) {
+			if (this.hlsInstance) {
+				this.hlsInstance.destroy();
+				this.hlsInstance = null;
+			}
+			this.videoElement.innerHTML = '';
+			this.subtitleUrl = subtitleUrl;
+			if (videoUrl.includes('.m3u8')) {
+				this.handleHLSPlayback(videoUrl);
+			} else {
+				this.handleRegularPlayback(videoUrl);
+			}
+		},
+
+        handleHLSPlayback(url) {
+            if (Hls.isSupported()) {
+                this.hlsInstance = new Hls({
+                    maxBufferLength: 60,
+                    maxMaxBufferLength: 120,
+                    maxBufferSize: 100 * 1000 * 1000,
+                    maxBufferHole: 0.5,
+                    lowLatencyMode: false,
+                    enableWorker: true
+                });
+                this.setupHLSEvents(url);
+            } else if (this.videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                this.videoElement.src = url;
+                this.startVideoPlayback();
+            }
+        },
+
+        setupHLSEvents(url) {
+            this.hlsInstance.loadSource(url);
+            this.hlsInstance.attachMedia(this.videoElement);
+            this.addTextTrack();
+            this.hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
+                if (this.hlsInstance.levels.length > 0) {
+                    this.hlsInstance.currentLevel = this.hlsInstance.levels.length - 1;
+                }
+                this.startVideoPlayback();
+            });
+            this.hlsInstance.on(Hls.Events.ERROR, (event, data) => {
+                this.handleHLSError(url, data);
+            });
+        },
+
+        handleHLSError(url, data) {
+            if (data.fatal) {
+                switch (data.type) {
+                    case Hls.ErrorTypes.NETWORK_ERROR:
+                        this.hlsInstance.startLoad();
+                        break;
+                    case Hls.ErrorTypes.MEDIA_ERROR:
+                        this.hlsInstance.recoverMediaError();
+                        break;
+                    default:
+                        this.hlsInstance.destroy();
+                        this.hlsInstance = null;
+                        this.playVideo(url);
+                        break;
+                }
+            }
+        },
+
+		handleRegularPlayback(url) {
+			const source = document.createElement('source');
+			source.src = url;
+			source.type = this.getVideoType(url);
+			this.videoElement.appendChild(source);
+			this.addTextTrack();
+			this.videoElement.preload = 'auto';
+			this.videoElement.load();
+
+			// Esperar a que tenga suficiente buffer antes de iniciar
+			const tryPlayWhenBuffered = () => {
+				const buffered = this.videoElement.buffered;
+				const currentTime = this.videoElement.currentTime;
+				if (buffered.length && buffered.end(0) - currentTime >= 5) {
+					this.videoElement.removeEventListener('canplay', tryPlayWhenBuffered);
+					this.startVideoPlayback(); // Solo iniciar cuando hay al menos 5s
+				} else {
+					// Esperar un poco y reintentar si aún no hay suficiente
+					setTimeout(tryPlayWhenBuffered, 500);
+				}
+			};
+
+			this.videoElement.addEventListener('canplay', tryPlayWhenBuffered);
+		},
+
+        getVideoType(url) {
+            const extension = url.split('.').pop().split('?')[0];
+            return `video/${extension === 'mp4' ? 'mp4' : 'webm'}`;
+        },
+
+		addTextTrack() {
+			const track = document.createElement('track');
+			track.kind = 'subtitles';
+			track.src = this.subtitleUrl; // URL obtenida desde data-subtitles
+			track.srclang = 'es'; // Idioma fijo
+			track.label = 'Español';
+			track.default = true;
+			track.setAttribute('crossorigin', 'anonymous'); // ¡Importante para CORS!
+			this.videoElement.appendChild(track);
+		},
+
+        startVideoPlayback() {
+            this.controls.progress.style.width = '0%';
+            this.controls.currentTime.textContent = '00:00';
+            this.controls.duration.textContent = '00:00';
+
+            const tryPlay = (retryCount = 0) => {
+                if (retryCount > 3) {
+                    this.controls.loading.textContent = 'Demasiados intentos fallidos';
+                    this.showLoading(true);
+                    return;
+                }
+                this.videoElement.play()
+                    .then(() => {
+                        this.playerModal.style.display = 'block';
+                        this.isPlaying = true;
+                        this.setupVideoTextTracks();
+						this._startBufferMonitoring();
+                    })
+                    .catch(error => {
+                        console.error('Error de reproducción:', error);
+                        this.controls.loading.textContent = this.getErrorMessage(error);
+                        this.showLoading(true);
+                        setTimeout(() => tryPlay(retryCount + 1), 1000);
+                    });
+            };
+            tryPlay();
+        },
+		
+		_startBufferMonitoring() {
+			clearInterval(this._bufferInterval); // Evitar múltiples instancias
+
+			const MIN_BUFFER_SECONDS = 15;
+			const video = this.videoElement;
+			const loadingIndicator = this.controls.loading;
+
+			this._bufferInterval = setInterval(() => {
+				if (!this.isPlaying || video.readyState < 1) return;
+
+				let bufferEnd = 0;
+				const currentTime = video.currentTime;
+
+				for (let i = 0; i < video.buffered.length; i++) {
+					if (video.buffered.start(i) <= currentTime && video.buffered.end(i) >= currentTime) {
+						bufferEnd = video.buffered.end(i);
+						break;
+					}
+				}
+
+				const bufferedAhead = bufferEnd - currentTime;
+
+				// Mostrar cuánto buffer hay (solo si lo querés visualizar en consola o UI)
+				// console.log(`Buffer ahead: ${bufferedAhead.toFixed(1)}s`);
+
+				if (bufferedAhead < MIN_BUFFER_SECONDS) {
+					if (video.readyState < 3 && video.paused) {
+						video.play().catch(() => {});
+						loadingIndicator.style.display = 'block';
+					}
+				} else {
+					loadingIndicator.style.display = 'none';
+				}
+			}, 1000);
+		},
+
+        getErrorMessage(error) {
+            if (error.message.includes('Failed to fetch')) {
+                return 'Error de red. Verifica tu conexión';
+            }
+            if (error.message.includes('decoding')) {
+                return 'Formato de video no soportado';
+            }
+            return 'Error al cargar el video';
+        },
+
+		toggleFullscreen() {
+			const elem = this.videoContainer; // <<--- Usa el contenedor del video
+			if (!document.fullscreenElement) {
+				if (elem.requestFullscreen) {
+					elem.requestFullscreen();
+				} else if (elem.webkitRequestFullscreen) { // Safari
+					elem.webkitRequestFullscreen();
+				} else if (elem.msRequestFullscreen) { // IE11
+					elem.msRequestFullscreen();
+				}
+				this.controls.fullscreen.textContent = '⛶'; // Icono salir
+			} else {
+				document.exitFullscreen();
+				this.controls.fullscreen.textContent = '⛶';
+			}
+		},
+
+        closeVideoPlayer() {
+            if (this.hlsInstance) {
+                this.hlsInstance.destroy();
+                this.hlsInstance = null;
+            }
+            this.videoElement.pause();
+            this.playerModal.style.display = 'none';
+            this.isPlaying = false;
+            this.videoElement.currentTime = 0;
+            this.controls.progress.style.width = '0%';
+            this.controls.currentTime.textContent = '00:00';
+            this.controls.centerPlay.classList.remove('visible');
+            this.videoElement.innerHTML = ''; // Limpiar elementos internos
+        },
+		
+		openMangaReader(book) {
+		  // 1) Leer del atributo correcto
+		  const raw = book.dataset[`src${this.currentLang}`];
+		  if (!raw) {
+			console.error(`No hay páginas para ${this.currentLang}`);
+			return;
+		  }
+		  const pages = JSON.parse(raw);
+
+		  // 2) Inicializar estado
+		  this._mangaIndex = 0;
+		  this._mangaTotal = pages.length;
+		  this.mangaPages.innerHTML = '';
+
+		  // 3) Crear cada <div class="page-item"><img/></div>
+		  pages.forEach(src => {
+			const d = document.createElement('div');
+			d.className = 'page-item';
+			d.innerHTML = `<img src="${src}" alt="Página de Manga">`;
+			this.mangaPages.appendChild(d);
+		  });
+
+		  // 4) Mostrar contador y modal
+		  this.mangaCounter.textContent = `1/${this._mangaTotal}`;
+		  this.mangaModal.classList.remove('hidden');
+		  this.mangaModal.classList.add('flex');
+		  document.body.classList.add('no-scroll');
+
+		  // 5) Navegación
+		  this.mangaNextBtn.onclick = () => {
+			if (this._mangaIndex < this._mangaTotal - 1) this._mangaIndex++;
+			this._updateMangaView();
+		  };
+		  this.mangaPrevBtn.onclick = () => {
+			if (this._mangaIndex > 0) this._mangaIndex--;
+			this._updateMangaView();
+		  };
+		  this.mangaModeBtns.forEach(btn => {
+			btn.onclick = () => {
+			  const mode = btn.dataset.mode;
+			  this.mangaPages.classList.toggle('horizontal', mode === 'horizontal');
+			  this.mangaPages.classList.toggle('vertical',   mode === 'vertical');
+			};
+		  });
+		},
+
+		_updateMangaView() {
+		  const pages = this.mangaPages.querySelectorAll('.page-item');
+		  if (!pages[this._mangaIndex]) return;
+
+		  const currentPage = pages[this._mangaIndex];
+		  const container = this.mangaPages;
+
+		  // Horizontal
+		  if (container.classList.contains('horizontal')) {
+			const offsetLeft = currentPage.offsetLeft;
+			const centerX = offsetLeft - (container.clientWidth - currentPage.clientWidth) / 2;
+			container.scrollTo({ left: centerX, behavior: 'smooth' });
+		  }
+
+		  // Vertical
+		  if (container.classList.contains('vertical')) {
+			const offsetTop = currentPage.offsetTop;
+			const centerY = offsetTop - (container.clientHeight - currentPage.clientHeight) / 2;
+			container.scrollTo({ top: centerY, behavior: 'smooth' });
+		  }
+
+		  // Actualizar el contador después de centrar
+		  this._updateMangaCounter();
+		},
+		
+		_updateMangaCounter() {
+			this.mangaCounter.textContent = `${this._mangaIndex + 1} / ${this._mangaTotal}`;
+		},
+
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        contentManager.init();
+        document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+            link.setAttribute('fetchpriority', 'high');
+        });
+    });
+	
+</script>
+</body>
+</html>
