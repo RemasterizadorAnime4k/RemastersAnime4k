@@ -619,443 +619,244 @@
     <div class="anime-grid"></div>
     <button class="back-to-top" aria-label="Volver al inicio">↑</button>
 
-    <script>
-        const animeData = [
-            { 
-                title: 'Sasuke', 
-                image: 'https://cdn.myanimelist.net/images/anime/1559/124739l.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba',
-                description: 'Un niño ninja prodigio, se enfrenta a un mundo hostil tras la derrota de su señor'
-            },
-            { 
-                title: 'Attack on Titan', 
-                image: 'https://cdn.myanimelist.net/images/anime/1409/104606l.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/16498/Shingeki_no_Kyojin',
-                description: 'La humanidad lucha por sobrevivir dentro de ciudades rodeadas de enormes muros.'
-            },
-            { 
-                title: 'Jujutsu Kaisen', 
-                image: 'https://cdn.myanimelist.net/images/anime/1171/109222.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/40748/Jujutsu_Kaisen',
-                description: 'Yuji Itadori se une a una organización secreta de hechiceros para eliminar una poderosa maldición.'
-            },
-            {
-                title: 'El viaje de Chihiro',
-                image: 'https://cdn.myanimelist.net/images/anime/1127/116848l.jpg',
-                categories: ['anime'],
-                url: 'https://myanimelist.net/anime/199/Sen_to_Chihiro_no_Kamikakushi',
-                description: 'Un viaje mágico a través de un mundo espiritual lleno de criaturas fantásticas.'
-            },
-            { 
-                title: 'Solo Leveling', 
-                image: 'https://cdn.myanimelist.net/images/manga/3/234100l.jpg',
-                categories: ['manhwa'],
-                url: 'https://myanimelist.net/manga/121496/Ore_dake_Level_Up_na_Ken',
-                description: 'Un cazador débil descubre habilidades únicas que cambiarán su destino.'
-            },
-            { 
-                title: 'Tower of God', 
-                image: 'https://cdn.myanimelist.net/images/manga/2/223694l.jpg',
-                categories: ['manhwa'],
-				url: 'https://myanimelist.net/manga/122663/Tower_of_God',
-				description: 'Una épica aventura para alcanzar la cima de una misteriosa torre.'
-            },
-			{ 
-                title: 'Demon Slayer', 
-                image: 'https://cdn.myanimelist.net/images/anime/1286/99889.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba',
-                description: 'Tanjiro Kamado se convierte en cazador de demonios para curar a su hermana y vengar su familia.'
-            },
-            { 
-                title: 'Attack on Titan', 
-                image: 'https://cdn.myanimelist.net/images/anime/1409/104606l.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/16498/Shingeki_no_Kyojin',
-                description: 'La humanidad lucha por sobrevivir dentro de ciudades rodeadas de enormes muros.'
-            },
-            { 
-                title: 'Jujutsu Kaisen', 
-                image: 'https://cdn.myanimelist.net/images/anime/1171/109222.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/40748/Jujutsu_Kaisen',
-                description: 'Yuji Itadori se une a una organización secreta de hechiceros para eliminar una poderosa maldición.'
-            },
-            {
-                title: 'El viaje de Chihiro',
-                image: 'https://cdn.myanimelist.net/images/anime/1127/116848l.jpg',
-                categories: ['anime'],
-                url: 'https://myanimelist.net/anime/199/Sen_to_Chihiro_no_Kamikakushi',
-                description: 'Un viaje mágico a través de un mundo espiritual lleno de criaturas fantásticas.'
-            },
-            { 
-                title: 'Solo Leveling', 
-                image: 'https://cdn.myanimelist.net/images/manga/3/234100l.jpg',
-                categories: ['manhwa'],
-                url: 'https://myanimelist.net/manga/121496/Ore_dake_Level_Up_na_Ken',
-                description: 'Un cazador débil descubre habilidades únicas que cambiarán su destino.'
-            },
-            { 
-                title: 'Tower of God', 
-                image: 'https://cdn.myanimelist.net/images/manga/2/223694l.jpg',
-                categories: ['manhwa'],
-				url: 'https://myanimelist.net/manga/122663/Tower_of_God',
-				description: 'Una épica aventura para alcanzar la cima de una misteriosa torre.'
-            },
-			{  
-                title: 'Demon Slayer', 
-                image: 'https://cdn.myanimelist.net/images/anime/1286/99889.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba',
-                description: 'Tanjiro Kamado se convierte en cazador de demonios para curar a su hermana y vengar su familia.'
-            },
-            { 
-                title: 'Attack on Titan', 
-                image: 'https://cdn.myanimelist.net/images/anime/1409/104606l.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/16498/Shingeki_no_Kyojin',
-                description: 'La humanidad lucha por sobrevivir dentro de ciudades rodeadas de enormes muros.'
-            },
-            { 
-                title: 'Jujutsu Kaisen', 
-                image: 'https://cdn.myanimelist.net/images/anime/1171/109222.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/40748/Jujutsu_Kaisen',
-                description: 'Yuji Itadori se une a una organización secreta de hechiceros para eliminar una poderosa maldición.'
-            },
-            {
-                title: 'El viaje de Chihiro',
-                image: 'https://cdn.myanimelist.net/images/anime/1127/116848l.jpg',
-                categories: ['anime'],
-                url: 'https://myanimelist.net/anime/199/Sen_to_Chihiro_no_Kamikakushi',
-                description: 'Un viaje mágico a través de un mundo espiritual lleno de criaturas fantásticas.'
-            },
-            { 
-                title: 'Solo Leveling', 
-                image: 'https://cdn.myanimelist.net/images/manga/3/234100l.jpg',
-                categories: ['manhwa'],
-                url: 'https://myanimelist.net/manga/121496/Ore_dake_Level_Up_na_Ken',
-                description: 'Un cazador débil descubre habilidades únicas que cambiarán su destino.'
-            },
-            { 
-                title: 'Tower of God', 
-                image: 'https://cdn.myanimelist.net/images/manga/2/223694l.jpg',
-                categories: ['manhwa'],
-				url: 'https://myanimelist.net/manga/122663/Tower_of_God',
-				description: 'Una épica aventura para alcanzar la cima de una misteriosa torre.'
-            },
-			{ 
-                title: 'Demon Slayer', 
-                image: 'https://cdn.myanimelist.net/images/anime/1286/99889.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba',
-                description: 'Tanjiro Kamado se convierte en cazador de demonios para curar a su hermana y vengar su familia.'
-            },
-            { 
-                title: 'Attack on Titan', 
-                image: 'https://cdn.myanimelist.net/images/anime/1409/104606l.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/16498/Shingeki_no_Kyojin',
-                description: 'La humanidad lucha por sobrevivir dentro de ciudades rodeadas de enormes muros.'
-            },
-            { 
-                title: 'Jujutsu Kaisen', 
-                image: 'https://cdn.myanimelist.net/images/anime/1171/109222.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/40748/Jujutsu_Kaisen',
-                description: 'Yuji Itadori se une a una organización secreta de hechiceros para eliminar una poderosa maldición.'
-            },
-            {
-                title: 'El viaje de Chihiro',
-                image: 'https://cdn.myanimelist.net/images/anime/1127/116848l.jpg',
-                categories: ['anime'],
-                url: 'https://myanimelist.net/anime/199/Sen_to_Chihiro_no_Kamikakushi',
-                description: 'Un viaje mágico a través de un mundo espiritual lleno de criaturas fantásticas.'
-            },
-            { 
-                title: 'Solo Leveling', 
-                image: 'https://cdn.myanimelist.net/images/manga/3/234100l.jpg',
-                categories: ['manhwa'],
-                url: 'https://myanimelist.net/manga/121496/Ore_dake_Level_Up_na_Ken',
-                description: 'Un cazador débil descubre habilidades únicas que cambiarán su destino.'
-            },
-            { 
-                title: 'Tower of God', 
-                image: 'https://cdn.myanimelist.net/images/manga/2/223694l.jpg',
-                categories: ['manhwa'],
-				url: 'https://myanimelist.net/manga/122663/Tower_of_God',
-				description: 'Una épica aventura para alcanzar la cima de una misteriosa torre.'
-            },
-			{ 
-                title: 'Demon Slayer', 
-                image: 'https://cdn.myanimelist.net/images/anime/1286/99889.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba',
-                description: 'Tanjiro Kamado se convierte en cazador de demonios para curar a su hermana y vengar su familia.'
-            },
-            { 
-                title: 'Attack on Titan', 
-                image: 'https://cdn.myanimelist.net/images/anime/1409/104606l.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/16498/Shingeki_no_Kyojin',
-                description: 'La humanidad lucha por sobrevivir dentro de ciudades rodeadas de enormes muros.'
-            },
-            { 
-                title: 'Jujutsu Kaisen', 
-                image: 'https://cdn.myanimelist.net/images/anime/1171/109222.jpg',
-                categories: ['anime', 'manga'],
-                url: 'https://myanimelist.net/anime/40748/Jujutsu_Kaisen',
-                description: 'Yuji Itadori se une a una organización secreta de hechiceros para eliminar una poderosa maldición.'
-            },
-            {
-                title: 'El viaje de Chihiro',
-                image: 'https://cdn.myanimelist.net/images/anime/1127/116848l.jpg',
-                categories: ['anime'],
-                url: 'https://myanimelist.net/anime/199/Sen_to_Chihiro_no_Kamikakushi',
-                description: 'Un viaje mágico a través de un mundo espiritual lleno de criaturas fantásticas.'
-            },
-            { 
-                title: 'Solo Leveling', 
-                image: 'https://cdn.myanimelist.net/images/manga/3/234100l.jpg',
-                categories: ['manhwa'],
-                url: 'https://myanimelist.net/manga/121496/Ore_dake_Level_Up_na_Ken',
-                description: 'Un cazador débil descubre habilidades únicas que cambiarán su destino.'
-            },
-            { 
-                title: 'Tower of God', 
-                image: 'https://cdn.myanimelist.net/images/manga/2/223694l.jpg',
-                categories: ['manhwa'],
-				url: 'https://myanimelist.net/manga/122663/Tower_of_God',
-				description: 'Una épica aventura para alcanzar la cima de una misteriosa torre.'
+<script>
+    let currentCategory = 'home';
+    let searchTerm = '';
+
+    async function loadAnimeData() {
+        try {
+            const response = await fetch('data/animeData.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        ];
+            return await response.json();
+        } catch (error) {
+            console.error("No se pudo cargar animeData:", error);
+            return [];
+        }
+    }
 
-		let currentCategory = 'home';
-		let searchTerm = '';
+    function toggleFavorite(title) {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const index = favorites.indexOf(title);
+        favorites.splice(index, index === -1 ? 0 : 1, ...(index === -1 ? [title] : []));
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        updateFavoriteIcons();
+    }
 
-		function toggleFavorite(title) {
-			const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-			const index = favorites.indexOf(title);
-			favorites.splice(index, index === -1 ? 0 : 1, ...(index === -1 ? [title] : []));
-			localStorage.setItem('favorites', JSON.stringify(favorites));
-			updateFavoriteIcons();
-		}
+    function updateFavoriteIcons() {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        document.querySelectorAll('.favorite-icon').forEach(icon => {
+            const title = icon.closest('.anime-card').querySelector('.anime-title').textContent;
+            icon.classList.toggle('active', favorites.includes(title));
+        });
+    }
 
-		function updateFavoriteIcons() {
-			const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-			document.querySelectorAll('.favorite-icon').forEach(icon => {
-				const title = icon.closest('.anime-card').querySelector('.anime-title').textContent;
-				icon.classList.toggle('active', favorites.includes(title));
-			});
-		}
+    function generateCards(data) {
+        const grid = document.querySelector('.anime-grid');
+        grid.innerHTML = data.map((item, index) => `
+            ${(index % 18 === 0 && index !== 0) ? `
+                <div class="asd-container" data-url="https://es.pikbest.com/templates/food-menu-delicious-burger-instagram-social-media-advertising-banner-ad-post-design_8970422.html">
+                    <div class="asd-badge">PUBLICIDAD</div>
+                    <img src="https://img.pikbest.com/origin/08/97/04/22MpIkbEsTia2.jpg!w700wp" 
+                         class="asd-image" 
+                         alt="Publicidad"
+                         loading="lazy">
+                    <div class="asd-content">
+                        <h3 class="asd-title">¡Tienda Oficial de Anime!</h3>
+                        <p class="asd-description">Consigue productos exclusivos y ediciones coleccionables ✨</p>
+                        <a href="https://es.pikbest.com/templates/food-menu-delicious-burger-instagram-social-media-advertising-banner-ad-post-design_8970422.html" class="asd-cta">Ver Ofertas</a>
+                    </div>
+                </div>` : ''}
+            <div class="anime-card" data-link="${item.url}">
+                <div class="favorite-icon" onclick="toggleFavorite('${item.title.replace(/'/g, "\\'")}')">♥</div>
+                <div class="category-bubbles">
+                    ${item.categories.map(cat => `<div class="category-bubble">${cat.toUpperCase()}</div>`).join('')}
+                </div>
+                <img src="${item.image}" 
+                     alt="Portada de ${item.title}" 
+                     class="anime-image"
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/300x400?text=Imagen+no+disponible'">
+                <h3 class="anime-title">${item.title}</h3>
+                <div class="anime-description">
+                    <p class="description-content">${item.description}</p>
+                </div>
+            </div>
+        `).join('');
 
-		function generateCards(data) {
-			const grid = document.querySelector('.anime-grid');
-			grid.innerHTML = data.map((item, index) => `
-				${(index % 18 === 0 && index !== 0) ? `
-					<div class="asd-container" data-url="https://es.pikbest.com/templates/food-menu-delicious-burger-instagram-social-media-advertising-banner-ad-post-design_8970422.html">
-						<div class="asd-badge">PUBLICIDAD</div>
-						<img src="https://img.pikbest.com/origin/08/97/04/22MpIkbEsTia2.jpg!w700wp" 
-							 class="asd-image" 
-							 alt="Publicidad"
-							 loading="lazy">
-						<div class="asd-content">
-							<h3 class="asd-title">¡Tienda Oficial de Anime!</h3>
-							<p class="asd-description">Consigue productos exclusivos y ediciones coleccionables ✨</p>
-							<a href="https://es.pikbest.com/templates/food-menu-delicious-burger-instagram-social-media-advertising-banner-ad-post-design_8970422.html" class="asd-cta">Ver Ofertas</a>
-						</div>
-					</div>` : ''}
-				<div class="anime-card" data-link="${item.url}">
-					<div class="favorite-icon" onclick="toggleFavorite('${item.title.replace(/'/g, "\\'")}')">♥</div>
-					<div class="category-bubbles">
-						${item.categories.map(cat => `<div class="category-bubble">${cat.toUpperCase()}</div>`).join('')}
-					</div>
-					<img src="${item.image}" 
-						 alt="Portada de ${item.title}" 
-						 class="anime-image"
-						 loading="lazy"
-						 onerror="this.src='https://via.placeholder.com/300x400?text=Imagen+no+disponible'">
-					<h3 class="anime-title">${item.title}</h3>
-					<div class="anime-description">
-						<p class="description-content">${item.description}</p>
-					</div>
-				</div>
-			`).join('');
+        document.querySelectorAll('.asd-container').forEach(ad => {
+            ad.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('ad-cta')) {
+                    window.open(ad.dataset.url, '_blank');
+                }
+            });
+        });
+    }
 
-			document.querySelectorAll('.asd-container').forEach(ad => {
-				ad.addEventListener('click', (e) => {
-					if(!e.target.classList.contains('ad-cta')) {
-						window.open(ad.dataset.url, '_blank');
-					}
-				});
-			});
-		}
+    function filterCards() {
+        const filteredData = window.animeData.filter(item =>
+            (currentCategory === 'home' || item.categories.includes(currentCategory)) &&
+            item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
 
-		function filterCards() {
-			const filteredData = animeData.filter(item => 
-				(currentCategory === 'home' || item.categories.includes(currentCategory)) &&
-				item.title.toLowerCase().includes(searchTerm.toLowerCase())
-			);
+        document.querySelector('.loading').style.display = 'block';
+        setTimeout(() => {
+            generateCards(filteredData);
+            document.querySelector('.loading').style.display = 'none';
+            updateNoResultsMessage(filteredData);
+            updateFavoriteIcons();
+            setupIntersectionObserver();
+        }, 300);
+    }
 
-			document.querySelector('.loading').style.display = 'block';
-			setTimeout(() => {
-				generateCards(filteredData);
-				document.querySelector('.loading').style.display = 'none';
-				updateNoResultsMessage(filteredData);
-				updateFavoriteIcons();
-				setupIntersectionObserver();
-			}, 300);
-		}
+    function updateNoResultsMessage(data) {
+        const existingMessage = document.querySelector('.no-results');
+        if (data.length === 0 && !existingMessage) {
+            document.querySelector('.anime-grid').insertAdjacentHTML('afterend', 
+                `<p class="no-results">🔍 No se encontraron resultados para "${searchTerm}"</p>`);
+        } else if (data.length > 0 && existingMessage) {
+            existingMessage.remove();
+        }
+    }
 
-		function updateNoResultsMessage(data) {
-			const existingMessage = document.querySelector('.no-results');
-			if(data.length === 0 && !existingMessage) {
-				document.querySelector('.anime-grid').insertAdjacentHTML('afterend', 
-					`<p class="no-results">🔍 No se encontraron resultados para "${searchTerm}"</p>`);
-			} else if(data.length > 0 && existingMessage) {
-				existingMessage.remove();
-			}
-		}
+    function setupIntersectionObserver() {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
 
-		function setupIntersectionObserver() {
-			const observer = new IntersectionObserver(entries => {
-				entries.forEach(entry => {
-					if(entry.isIntersecting) {
-						entry.target.style.opacity = 1;
-						entry.target.style.transform = 'translateY(0)';
-						observer.unobserve(entry.target);
-					}
-				});
-			}, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
+        document.querySelectorAll('.anime-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            observer.observe(card);
+        });
+    }
 
-			document.querySelectorAll('.anime-card').forEach(card => {
-				card.style.opacity = 0;
-				card.style.transform = 'translateY(20px)';
-				observer.observe(card);
-			});
-		}
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentCategory = link.getAttribute('href').slice(1);
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+            document.querySelector('.nav-links').classList.remove('active');
+            document.querySelector('.menu-toggle').textContent = '☰';
+            filterCards();
+        });
+    });
 
-		// Event Listeners
-		document.querySelectorAll('.nav-links a').forEach(link => {
-			link.addEventListener('click', (e) => {
-				e.preventDefault();
-				currentCategory = link.getAttribute('href').slice(1);
-				document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-				link.classList.add('active');
-				document.querySelector('.nav-links').classList.remove('active');
-				document.querySelector('.menu-toggle').textContent = '☰';
-				filterCards();
-			});
-		});
+    document.querySelector('.search-input').addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        filterCards();
+    });
 
-		document.querySelector('.search-input').addEventListener('input', (e) => {
-			searchTerm = e.target.value;
-			filterCards();
-		});
+    document.querySelector('.menu-toggle').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+        document.querySelector('.menu-toggle').textContent =
+            navLinks.classList.contains('active') ? '×' : '☰';
+    });
 
-		document.querySelector('.menu-toggle').addEventListener('click', (e) => {
-			e.stopPropagation();
-			const navLinks = document.querySelector('.nav-links');
-			navLinks.classList.toggle('active');
-			document.querySelector('.menu-toggle').textContent = 
-				navLinks.classList.contains('active') ? '×' : '☰';
-		});
-		
-		document.addEventListener('click', (e) => {
-			if (!e.target.closest('.navbar')) {
-				document.querySelector('.nav-links').classList.remove('active');
-				document.querySelector('.menu-toggle').textContent = '☰';
-			}
-		});
-		
-		window.addEventListener('scroll', () => {
-			const navLinks = document.querySelector('.nav-links');
-			if (navLinks.classList.contains('active')) {
-				navLinks.classList.remove('active');
-				document.querySelector('.menu-toggle').textContent = '☰';
-			}
-		});
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.navbar')) {
+            document.querySelector('.nav-links').classList.remove('active');
+            document.querySelector('.menu-toggle').textContent = '☰';
+        }
+    });
 
-		document.querySelector('.back-to-top').addEventListener('click', () => {
-			window.scrollTo({ top: 0, behavior: 'smooth' });
-		});
-		
-		class MobileNavigation {
-			constructor() {
-				this.lastScroll = 0;
-				this.navbar = document.querySelector('.navbar');
-				this.isMobile = window.innerWidth <= 768;
-				this.throttleTimeout = null;
-				
-				this.addEventListeners();
-			}
+    window.addEventListener('scroll', () => {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            document.querySelector('.menu-toggle').textContent = '☰';
+        }
+    });
 
-			addEventListeners() {
-				window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
-				window.addEventListener('resize', () => this.handleResize());
-			}
+    document.querySelector('.back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-			handleScroll() {
-				if (!this.isMobile) return;
-				
-				// Throttle para mejor rendimiento
-				if (!this.throttleTimeout) {
-					this.throttleTimeout = setTimeout(() => {
-						const currentScroll = window.pageYOffset;
-						const scrollDown = currentScroll > 100 && currentScroll > this.lastScroll;
-						
-						this.navbar.classList.toggle('nav-hidden', scrollDown);
-						this.lastScroll = currentScroll;
-						this.throttleTimeout = null;
-					}, 100);
-				}
-			}
+    class MobileNavigation {
+        constructor() {
+            this.lastScroll = 0;
+            this.navbar = document.querySelector('.navbar');
+            this.isMobile = window.innerWidth <= 768;
+            this.throttleTimeout = null;
 
-			handleResize() {
-				this.isMobile = window.innerWidth <= 768;
-				if (!this.isMobile) {
-					this.navbar.classList.remove('nav-hidden');
-				}
-			}
-		}
+            this.addEventListeners();
+        }
 
-		window.addEventListener('scroll', () => {
-			const button = document.querySelector('.back-to-top');
-			button.style.opacity = window.scrollY > 500 ? 1 : 0;
-			
-			if(window.innerWidth <= 1024) {
-				document.querySelectorAll('.anime-card:not(.loaded)').forEach(card => {
-					const rect = card.getBoundingClientRect();
-					if(rect.top < window.innerHeight * 1.2) {
-						card.style.opacity = 1;
-						card.style.transform = 'translateY(0)';
-						card.classList.add('loaded');
-					}
-				});
-			}
-		});
+        addEventListeners() {
+            window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
+            window.addEventListener('resize', () => this.handleResize());
+        }
 
-		document.querySelector('.anime-grid').addEventListener('click', (e) => {
-			const card = e.target.closest('.anime-card');
-			if(card && !e.target.classList.contains('favorite-icon')) {
-				window.open(card.dataset.link, '_blank');
-			}
-		});
+        handleScroll() {
+            if (!this.isMobile) return;
 
-		// Inicialización
-		document.addEventListener('DOMContentLoaded', () => {
-			const savedCategory = localStorage.getItem('selectedCategory') || 'home';
-			currentCategory = savedCategory;
-			const activeLink = document.querySelector(`.nav-links a[href="#${savedCategory}"]`);
-			activeLink?.classList.add('active');
-			
-			new MobileNavigation();
-			filterCards();
-			updateFavoriteIcons();
-		});	
-	</script>
+            if (!this.throttleTimeout) {
+                this.throttleTimeout = setTimeout(() => {
+                    const currentScroll = window.pageYOffset;
+                    const scrollDown = currentScroll > 100 && currentScroll > this.lastScroll;
+
+                    this.navbar.classList.toggle('nav-hidden', scrollDown);
+                    this.lastScroll = currentScroll;
+                    this.throttleTimeout = null;
+                }, 100);
+            }
+        }
+
+        handleResize() {
+            this.isMobile = window.innerWidth <= 768;
+            if (!this.isMobile) {
+                this.navbar.classList.remove('nav-hidden');
+            }
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        const button = document.querySelector('.back-to-top');
+        button.style.opacity = window.scrollY > 500 ? 1 : 0;
+
+        if (window.innerWidth <= 1024) {
+            document.querySelectorAll('.anime-card:not(.loaded)').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 1.2) {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                    card.classList.add('loaded');
+                }
+            });
+        }
+    });
+
+    document.querySelector('.anime-grid').addEventListener('click', (e) => {
+        const card = e.target.closest('.anime-card');
+        if (card && !e.target.classList.contains('favorite-icon')) {
+            window.open(card.dataset.link, '_blank');
+        }
+    });
+
+    // Inicialización final
+    document.addEventListener('DOMContentLoaded', async () => {
+        const savedCategory = localStorage.getItem('selectedCategory') || 'home';
+        currentCategory = savedCategory;
+        const activeLink = document.querySelector(`.nav-links a[href="#${savedCategory}"]`);
+        activeLink?.classList.add('active');
+
+        window.animeData = await loadAnimeData();
+
+        new MobileNavigation();
+        filterCards();
+        updateFavoriteIcons();
+    });
+</script>
+
 </body>
 </html>
