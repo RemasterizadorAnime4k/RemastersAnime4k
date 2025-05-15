@@ -5,12 +5,5 @@
     "categories": ["anime", "manga"],
     "url": "sasuke.html",
     "description": "Un niño ninja prodigio, se enfrenta a un mundo hostil tras la derrota de su señor"
-  },
-  {
-    "title": "Sasuke",
-    "image": "https://cdn.myanimelist.net/images/anime/1559/124739l.jpg",
-    "categories": ["anime", "manga"],
-    "url": "sasuke.html",
-    "description": "Un niño ninja prodigio, se enfrenta a un mundo hostil tras la derrota de su señor"
-  },
+  }
 ]
