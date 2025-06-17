@@ -1328,69 +1328,36 @@
             to { transform: rotate(360deg); }
         }
 
-	.comments-section {
-	  max-width: 1200px;
-	  margin: 3rem auto;
-	  padding: 1.5rem;
-	  background: var(--glass-bg);
-	  border: 1px solid var(--glass-border);
-	  box-shadow: var(--glass-shadow);
-	  border-radius: 16px;
-	  font-family: 'Comic Neue', cursive;
-	  animation: fadeInUp 0.6s ease-out;
-	}
-	
-	.comments-section h3 {
-	  color: #fff;
-	  text-align: center;
-	  margin-bottom: 1rem;
-	  font-size: 1.5rem;
-	  letter-spacing: 0.5px;
-	  position: relative;
-	}
-	
-	.comments-section h3::after {
-	  content: '';
-	  position: absolute;
-	  bottom: -8px;
-	  left: 50%;
-	  transform: translateX(-50%);
-	  width: 60%;
-	  height: 3px;
-	  background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-	}
-	
-	.giscus-frame {
-	  width: 100%;
-	  border-radius: 12px;
-	  overflow: hidden;
-	  margin-top: 1rem;
-	  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-	  transition: transform 0.3s ease;
-	}
-	
-	.giscus-frame:hover {
-	  transform: translateY(-2px);
-	}
-	/* Estilo opcional para el footer */
-	.giscus-frame iframe body .giscus-footer {
-	  background-color: var(--glass-bg) !important;
-	  border-top: 1px solid var(--glass-border) !important;
-	  text-align: center !important;
-	  font-size: 0.9rem !important;
-	  color: #ccc !important;
-	  padding: 0.5rem 0 !important;
-	}
-	
-	.giscus-frame iframe body .giscus-footer a {
-	  color: var(--primary-color) !important;
-	  text-decoration: none !important;
-	  font-weight: bold !important;
-	}
-	
-	.giscus-frame iframe body .giscus-footer a:hover {
-	  text-decoration: underline !important;
-	}
+.comments-section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+  font-family: 'Comic Neue', cursive;
+}
+
+.comments-section h3 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.comments-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+}
 		/* Mejoras responsive */
 		@media (max-width: 1024px) {
 			.anime-container {
