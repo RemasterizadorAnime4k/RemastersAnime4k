@@ -1328,50 +1328,69 @@
             to { transform: rotate(360deg); }
         }
 
-.comments-section {
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 1.5rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  border-radius: 16px;
-  font-family: 'Comic Neue', cursive;
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.comments-section h3 {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  letter-spacing: 0.5px;
-  position: relative;
-}
-
-.comments-section h3::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 3px;
-  background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-}
-
-.giscus-frame {
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-top: 1rem;
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.giscus-frame:hover {
-  transform: translateY(-2px);
-}
+	.comments-section {
+	  max-width: 800px;
+	  margin: 3rem auto;
+	  padding: 1.5rem;
+	  background: var(--glass-bg);
+	  border: 1px solid var(--glass-border);
+	  box-shadow: var(--glass-shadow);
+	  border-radius: 16px;
+	  font-family: 'Comic Neue', cursive;
+	  animation: fadeInUp 0.6s ease-out;
+	}
+	
+	.comments-section h3 {
+	  color: #fff;
+	  text-align: center;
+	  margin-bottom: 1rem;
+	  font-size: 1.5rem;
+	  letter-spacing: 0.5px;
+	  position: relative;
+	}
+	
+	.comments-section h3::after {
+	  content: '';
+	  position: absolute;
+	  bottom: -8px;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  width: 60%;
+	  height: 3px;
+	  background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+	}
+	
+	.giscus-frame {
+	  width: 100%;
+	  border-radius: 12px;
+	  overflow: hidden;
+	  margin-top: 1rem;
+	  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+	  transition: transform 0.3s ease;
+	}
+	
+	.giscus-frame:hover {
+	  transform: translateY(-2px);
+	}
+	/* Estilo opcional para el footer */
+	.giscus-frame iframe body .giscus-footer {
+	  background-color: var(--glass-bg) !important;
+	  border-top: 1px solid var(--glass-border) !important;
+	  text-align: center !important;
+	  font-size: 0.9rem !important;
+	  color: #ccc !important;
+	  padding: 0.5rem 0 !important;
+	}
+	
+	.giscus-frame iframe body .giscus-footer a {
+	  color: var(--primary-color) !important;
+	  text-decoration: none !important;
+	  font-weight: bold !important;
+	}
+	
+	.giscus-frame iframe body .giscus-footer a:hover {
+	  text-decoration: underline !important;
+	}
 		/* Mejoras responsive */
 		@media (max-width: 1024px) {
 			.anime-container {
@@ -3035,35 +3054,23 @@
 </script>
 <!-- Sección de comentarios -->
 <div class="comments-section">
-  <h3>Comentarios</h3>
-
-  <!-- Aquí va el script de Giscus -->
-<script src="https://giscus.app/client.js"
-        data-repo="RemasterizadorAnime4k/RemastersAnime4k"
-        data-repo-id="R_kgDOOqOmXA"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOOqOmXM4Crm62"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="0"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="es"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
+  <!-- Script de Giscus -->
+  <script src="https://giscus.app/client.js" 
+          data-repo="RemasterizadorAnime4k/RemastersAnime4k"
+          data-repo-id="R_kgDOOqOmXA"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOOqOmXM4Crm62"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="0"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="es"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
 </div>
-	<script>
-	  // Ocultar el formulario de comentarios de Giscus
-	  const style = document.createElement('style');
-	  style.innerHTML = `
-	    .giscus-frame iframe body #root > div:nth-child(2) {
-	      display: none !important;
-	    }
-	  `;
-	  document.head.appendChild(style);
-	</script>
 </body>
 </html>
