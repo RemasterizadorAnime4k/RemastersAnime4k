@@ -3054,5 +3054,15 @@
           async>
   </script>
 </div>
+	<script>
+	  // Ocultar el formulario de comentarios de Giscus
+	  const style = document.createElement('style');
+	  style.innerHTML = `
+	    .giscus-frame iframe body #root > div:nth-child(2) {
+	      display: none !important;
+	    }
+	  `;
+	  document.head.appendChild(style);
+	</script>
 </body>
 </html>
