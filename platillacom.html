@@ -1359,6 +1359,29 @@
   background: linear-gradient(to right, transparent, var(--primary-color), transparent);
 }
 
+.comments-toggle-container {
+  text-align: center;
+  margin: 3rem auto;
+}
+
+.btn-comments {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  font-family: 'Comic Neue', cursive;
+  transition: all 0.3s ease;
+}
+
+.btn-comments:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+}
+
 		/* Mejoras responsive */
 		@media (max-width: 1024px) {
 			.anime-container {
@@ -3020,25 +3043,49 @@
 
 })();
 </script>
-<!-- Sección de comentarios -->
-<div class="comments-section">
-  <!-- Script de Giscus -->
-  <script src="https://giscus.app/client.js" 
-          data-repo="RemasterizadorAnime4k/RemastersAnime4k"
-          data-repo-id="R_kgDOOqOmXA"
-          data-category="Announcements"
-          data-category-id="DIC_kwDOOqOmXM4Crm62"
-          data-mapping="pathname"
-          data-strict="1"
-          data-reactions-enabled="0"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="light"
-          data-lang="es"
-          data-loading="lazy"
-          crossorigin="anonymous"
-          async>
-  </script>
+
+<!-- Botón para cargar comentarios -->
+<div class="comments-toggle-container">
+  <button id="toggleCommentsBtn" class="btn-comments">💬 Ver comentarios</button>
 </div>
+<section class="comments-section" id="commentsSection" style="display: none;">
+  <!-- Aquí se cargará Giscus al hacer clic -->
+</section>
+<script>
+  document.getElementById('toggleCommentsBtn').addEventListener('click', function () {
+    const commentsSection = document.getElementById('commentsSection');
+
+    // Mostrar la sección si está oculta
+    if (commentsSection.style.display === 'none') {
+      commentsSection.style.display = 'block';
+      this.textContent = '❌ Ocultar comentarios';
+
+      // Crear dinámicamente el script de Giscus (solo si no se ha cargado antes)
+      if (!document.querySelector('.giscus-frame')) {
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js'; 
+        script.setAttribute('data-repo', 'RemasterizadorAnime4k/RemastersAnime4k');
+        script.setAttribute('data-repo-id', 'R_kgDOOqOmXA');
+        script.setAttribute('data-category', 'Announcements');
+        script.setAttribute('data-category-id', 'DIC_kwDOOqOmXM4Crm62');
+        script.setAttribute('data-mapping', 'pathname');
+        script.setAttribute('data-strict', '1');
+        script.setAttribute('data-reactions-enabled', '1');
+        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-input-position', 'top');
+        script.setAttribute('data-theme', 'light');
+        script.setAttribute('data-lang', 'es');
+        script.setAttribute('crossorigin', 'anonymous');
+        script.async = true;
+        script.className = 'giscus-frame'; // Para evitar recargarlo
+        commentsSection.appendChild(script);
+      }
+    } else {
+      // Ocultar comentarios sin recargarlos
+      commentsSection.style.display = 'none';
+      this.textContent = '💬 Ver comentarios';
+    }
+  });
+</script>
 </body>
 </html>
